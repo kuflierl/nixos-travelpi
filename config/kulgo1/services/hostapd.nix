@@ -12,7 +12,7 @@
       "wlp1s0u1u1" = {
         band = "5g";
         countryCode = "DE";
-        channel = 0; # ACS
+        channel = 132; # ACS doesn't seem to work for whatever reason
         # see https://github.com/morrownr/USB-WiFi/discussions/420
         wifi4 = {
           enable = true;
