@@ -96,16 +96,16 @@
         matchConfig.Name = "br-wan-u";
         networkConfig.DHCP = true;
         networkConfig.IPv6AcceptRA = true;
-        linkConfig.RequiredForOnline = false;
         networkConfig.IPForward = true;
+        linkConfig.RequiredForOnline = false;
         dhcpV4Config.RouteMetric = 600;
       };
       "31-br-wan-m" = {
         matchConfig.Name = "br-wan-m";
         networkConfig.DHCP = true;
         networkConfig.IPv6AcceptRA = true;
-        linkConfig.RequiredForOnline = false;
         networkConfig.IPForward = true;
+        linkConfig.RequiredForOnline = false;
         dhcpV4Config.RouteMetric = 400;
       };
       "32-br-lan-u" = {

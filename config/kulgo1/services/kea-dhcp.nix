@@ -4,7 +4,10 @@
     enable = true;
     settings = {
       interfaces-config = {
-        interfaces = [ "br-lan-u" "br-lan-m" ];
+        interfaces = [
+          "br-lan-u"
+          "br-lan-m"
+        ];
       };
       lease-database = {
         name = "/var/lib/kea/dhcp4.leases";
