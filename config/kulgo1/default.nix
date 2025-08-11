@@ -1,10 +1,10 @@
-{ lib }:
+{ lib, ... }:
 {
   imports = [
     ./users.nix
     ./services
     ./sops.nix
-    ./hardware.nihardware.nix
+    ./hardware.nix
   ];
 
   networking.hostName = "kulgo1";

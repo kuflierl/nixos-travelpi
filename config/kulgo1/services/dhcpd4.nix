@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 {
   services.dhcpd4 = {
     enable = true;

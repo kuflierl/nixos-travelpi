@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  ...
 }:
 {
   # partial inspiration from https://github.com/ghostbuster91/nixos-router/blob/main/modules/nixos/hostapd.nix
