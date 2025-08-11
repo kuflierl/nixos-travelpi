@@ -42,7 +42,7 @@
             ssid = config.networking.hostName;
             authentication = {
               mode = "wpa3-sae"; # may need to enable compatablity mode
-              saePasswordsFile = config.sops.secrets.access_points.unmetered.psk.path; # Use saePasswordsFile if possible.
+              saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
             };
             # fake bsside to satisfy module assertion
             # overided by ddynamicConfigScripts
@@ -53,7 +53,7 @@
             dynamicConfigScripts = {
               "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
                 HOSTAPD_CONFIG_FILE=$1
-                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets.access_points.unmetered.bssid.path} \
+                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/unmetered/bssid".path} \
                   | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
               '';
             };
@@ -62,7 +62,7 @@
             ssid = "${config.networking.hostName}-metered";
             authentication = {
               mode = "wpa3-sae";
-              saePasswordsFile = config.sops.secrets.access_points.metered.psk.path;
+              saePasswordsFile = config.sops.secrets."access_points/metered/psk".path;
             };
             # fake bsside to satisfy module assertion
             # overided by ddynamicConfigScripts
@@ -73,7 +73,7 @@
             dynamicConfigScripts = {
               "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
                 HOSTAPD_CONFIG_FILE=$1
-                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets.access_points.metered.bssid.path} \
+                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/metered/bssid".path} \
                   | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
               '';
             };

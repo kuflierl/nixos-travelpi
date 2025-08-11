@@ -5,20 +5,12 @@
     defaultSopsFile = ../../secrets/kulgo1.yaml;
     defaultSopsFormat = "yaml";
     secrets = {
-      access_points = {
-        metered = {
-          psk = { };
-          bssid = { };
-        };
-        unmetered = {
-          psk = { };
-          bssid = { };
-        };
-      };
-      wifi.home1 = {
-        ssid = { };
-        psk = { };
-      };
+      "access_points/metered/psk" = {};
+      "access_points/metered/bssid" = {};
+      "access_points/unmetered/psk" = {};
+      "access_points/unmetered/bssid" = {};
+      "wifi/home1/ssid" = {};
+      "wifi/home1/psk" = {};
     };
     templates = {
       "wifi_env".content = ''
