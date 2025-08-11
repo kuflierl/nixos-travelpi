@@ -96,7 +96,8 @@
         matchConfig.Name = "br-wan-u";
         networkConfig.DHCP = true;
         networkConfig.IPv6AcceptRA = true;
-        networkConfig.IPForward = true;
+        networkConfig.IPv4Forwarding = true;
+        networkConfig.IPv6Forwarding = false; # for now
         linkConfig.RequiredForOnline = false;
         dhcpV4Config.RouteMetric = 600;
       };
@@ -104,13 +105,16 @@
         matchConfig.Name = "br-wan-m";
         networkConfig.DHCP = true;
         networkConfig.IPv6AcceptRA = true;
-        networkConfig.IPForward = true;
+        networkConfig.IPv4Forwarding = true;
+        networkConfig.IPv6Forwarding = false; # for now
         linkConfig.RequiredForOnline = false;
         dhcpV4Config.RouteMetric = 400;
       };
       "32-br-lan-u" = {
         matchConfig.Name = "br-lan-u";
         networkConfig.DHCP = false;
+        networkConfig.IPv4Forwarding = true;
+        networkConfig.IPv6Forwarding = false; # for now
         bridgeConfig = { };
         address = [
           "192.168.10.1/24"
@@ -121,6 +125,8 @@
       "33-br-lan-m" = {
         matchConfig.Name = "br-lan-m";
         networkConfig.DHCP = false;
+        networkConfig.IPv4Forwarding = true;
+        networkConfig.IPv6Forwarding = false; # for now
         bridgeConfig = { };
         address = [
           "192.168.11.1/24"
