@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./dhcpd4.nix
+    ./kea-dhcp.nix
     ./hostapd.nix
   ];
 
