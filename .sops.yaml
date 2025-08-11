@@ -4,8 +4,10 @@
 # for a more complex example.
 keys:
   - &admin_kuflierl age1cxaad6a86wag6s82tu0ugm4jnymrnhj38qg0n0j6v4y3hzsfqcdq7pgu9k
+  - &device_kulgo1 age1napmf7e5tvhjclq4t8cf4z3y2j6l8meg3eld0ygwzz9w6tl48d8s3uuztl
 creation_rules:
   - path_regex: secrets/kulgo1\.yaml$
     key_groups:
     - age:
       - *admin_kuflierl
+      - *device_kulgo1
