@@ -1,9 +1,9 @@
-{ }:
+{ ... }:
 {
   # inspired from the following:
   # https://github.com/ghostbuster91/blogposts/blob/a2374f0039f8cdf4faddeaaa0347661ffc2ec7cf/router2023-part2/main.md
 
-  networkig = {
+  networking = {
     useNetworkd = true;
     useDHCP = false;
 
@@ -52,7 +52,7 @@
     };
   };
 
-  systems.network = {
+  systemd.network = {
     # enable systemd networkd for static interfaces
     enable = true;
 

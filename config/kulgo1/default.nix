@@ -5,6 +5,8 @@
     ./services
     ./sops.nix
     ./hardware.nix
+    ./networking.nix
+    # ./wireless.nix
   ];
 
   networking.hostName = "kulgo1";
