@@ -16,6 +16,10 @@
         lfc-interval = 1800;
         max-row-errors = 100;
       };
+      loggers = [ {
+        name = "*";
+        severity = "DEBUG";
+      } ];
       rebind-timer = 2000;
       renew-timer = 1000;
       valid-lifetime = 4000;
@@ -29,12 +33,10 @@
             {
               name = "domain-name-servers";
               data = "192.168.10.1";
-              always-send = true;
             }
             {
               name = "routers";
               data = "192.168.10.1";
-              always-send = true;
             }
           ];
         }
@@ -47,12 +49,10 @@
             {
               name = "domain-name-servers";
               data = "192.168.11.1";
-              always-send = true;
             }
             {
               name = "routers";
               data = "192.168.11.1";
-              always-send = true;
             }
           ];
         }
