@@ -53,7 +53,7 @@
             #"TX-STBC-2BY1"
             "SU-BEAMFORMEE"
             "MU-BEAMFORMEE"
-            "HTC-VHT"
+            #"HTC-VHT"
           ];
         };
         networks = {
