@@ -48,7 +48,7 @@
           operatingChannelWidth = "80"; # or "20or40"
           capabilities = [
             #"MAX-MPDU-11454"
-            "RXLDPC"
+            #"RXLDPC"
             "SHORT-GI-80"
             "TX-STBC-2BY1"
             "SU-BEAMFORMEE"
