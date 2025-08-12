@@ -61,31 +61,31 @@
         countryCode = "DE";
         channel = 0; # ACS
         # see https://github.com/morrownr/USB-WiFi/discussions/420
-        wifi4 = {
-          enable = true;
-          capabilities = [
-            #"LDPC"
-            "HT40+" # "HT40-"
-            "SHORT-GI-20"
-            "SHORT-GI-40"
-            #"RX-STBC1"
-            #"MAX-AMSDU-7935"
-            "DSSS_CCK-40"
-          ];
-        };
-        wifi5 = {
-          enable = true;
-          operatingChannelWidth = "20or40"; # or "80"
-          capabilities = [
-            #"MAX-MPDU-11454"
-            #"RXLDPC"
-            "SHORT-GI-80"
-            #"TX-STBC-2BY1"
-            "SU-BEAMFORMEE"
-            "MU-BEAMFORMEE"
-            #"HTC-VHT"
-          ];
-        };
+       # wifi4 = {
+       #   enable = true;
+       #   capabilities = [
+       #     #"LDPC"
+       #     "HT40+" # "HT40-"
+       #     "SHORT-GI-20"
+       #     "SHORT-GI-40"
+       #     #"RX-STBC1"
+       #     #"MAX-AMSDU-7935"
+       #     "DSSS_CCK-40"
+       #   ];
+       # };
+       # wifi5 = {
+       #   enable = true;
+       #   operatingChannelWidth = "20or40"; # or "80"
+       #   capabilities = [
+       #     #"MAX-MPDU-11454"
+       #     #"RXLDPC"
+       #     "SHORT-GI-80"
+       #     #"TX-STBC-2BY1"
+       #     "SU-BEAMFORMEE"
+       #     "MU-BEAMFORMEE"
+       #     #"HTC-VHT"
+       #   ];
+       # };
         networks = {
           "wlan0" = {
             ssid = "${config.networking.hostName}-5G";
