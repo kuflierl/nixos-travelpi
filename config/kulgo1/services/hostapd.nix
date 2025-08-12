@@ -18,7 +18,7 @@
             ssid = config.networking.hostName;
             authentication = {
               mode = "wpa3-sae-transition"; # may need to enable compatablity mode
-              saePasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
+              saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
               wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path;
             };
             # fake bsside to satisfy module assertion
