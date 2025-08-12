@@ -36,6 +36,10 @@
   environment.systemPackages = with pkgs; [
     iw
     git
+    usbutils
+    speedtest-cli
+    btop
+    htop
   ];
 
   i18n =
