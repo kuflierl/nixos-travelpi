@@ -33,6 +33,11 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    iw
+    git
+  ];
+
   i18n =
     let
       en_us = "en_US.UTF-8";
