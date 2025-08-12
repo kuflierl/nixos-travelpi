@@ -82,7 +82,7 @@
         networkConfig.ConfigureWithoutCarrier = true;
       };
       "21-enp1s0u1u4" = {
-        matchConfig.name = "enp1s0u1u4";
+        matchConfig.Name = "enp1s0u1u4";
         linkConfig.RequiredForOnline = false;
         networkConfig.Bridge = "br-wan-m";
         networkConfig.ConfigureWithoutCarrier = false;
