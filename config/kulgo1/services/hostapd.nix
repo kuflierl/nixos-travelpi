@@ -34,7 +34,7 @@
         wifi4 = {
           enable = true;
           capabilities = [
-            "LDPC"
+            #"LDPC"
             "HT40+" # "HT40-"
             "SHORT-GI-20"
             "SHORT-GI-40"
