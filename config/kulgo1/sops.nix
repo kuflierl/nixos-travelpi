@@ -7,8 +7,10 @@
     secrets = {
       "access_points/metered/psk" = { };
       "access_points/metered/bssid" = { };
+      "access_points/metered/bssid2" = { };
       "access_points/unmetered/psk" = { };
       "access_points/unmetered/bssid" = { };
+      "access_points/unmetered/bssid2" = { };
       #  "wifi/home1/ssid" = {};
       #  "wifi/home1/psk" = {};
     };

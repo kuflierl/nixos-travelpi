@@ -15,13 +15,43 @@
         channel = 9; # ACS
         networks = {
           "wlp1s0u1u1" = {
-            ssid = "${config.networking.hostName}-2g";
+            ssid = config.networking.hostName;
             authentication = {
               mode = "wpa3-sae"; # may need to enable compatablity mode
               saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
             };
+            # fake bsside to satisfy module assertion
+            # overided by ddynamicConfigScripts
+            bssid = "00:00:00:00:00:00";
             settings = {
               bridge = "br-lan-u";
+            };
+            dynamicConfigScripts = {
+              "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
+                HOSTAPD_CONFIG_FILE=$1
+                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/unmetered/bssid2".path} \
+                  | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
+              '';
+            };
+          };
+          "wlp1s0u1u1-1" = {
+            ssid = "${config.networking.hostName}-m";
+            authentication = {
+              mode = "wpa3-sae"; # may need to enable compatablity mode
+              saePasswordsFile = config.sops.secrets."access_points/metered/psk".path; # Use saePasswordsFile if possible.
+            };
+            # fake bsside to satisfy module assertion
+            # overided by ddynamicConfigScripts
+            bssid = "00:00:00:00:00:00";
+            settings = {
+              bridge = "br-lan-m";
+            };
+            dynamicConfigScripts = {
+              "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
+                HOSTAPD_CONFIG_FILE=$1
+                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/metered/bssid2".path} \
+                  | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
+              '';
             };
           };
         };
@@ -58,7 +88,7 @@
         };
         networks = {
           "wlan0" = {
-            ssid = config.networking.hostName;
+            ssid = "${config.networking.hostName}-5G";
             authentication = {
               mode = "wpa3-sae"; # may need to enable compatablity mode
               saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
