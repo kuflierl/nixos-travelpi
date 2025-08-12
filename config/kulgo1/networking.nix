@@ -81,6 +81,12 @@
         networkConfig.Bridge = "br-wan-u";
         networkConfig.ConfigureWithoutCarrier = true;
       };
+      "21-enp1s0u1u4" = {
+        matchConfig.name = "enp1s0u1u4";
+        linkConfig.RequiredForOnline = false;
+        networkConfig.Bridge = "br-wan-m";
+        networkConfig.ConfigureWithoutCarrier = false;
+      };
       #"21-wlan0" = {
       #  matchConfig.Name = "wlan0";
       #  linkConfig.RequiredForOnline = "enslaved";
