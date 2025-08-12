@@ -38,7 +38,7 @@
             "HT40+" # "HT40-"
             "SHORT-GI-20"
             "SHORT-GI-40"
-            "RX-STBC1"
+            #"RX-STBC1"
             "MAX-AMSDU-7935"
             "DSSS_CCK-40"
           ];
