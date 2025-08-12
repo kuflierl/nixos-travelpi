@@ -34,26 +34,26 @@
               '';
             };
           };
-          "wlp1s0u1u1-1" = {
-            ssid = "${config.networking.hostName}-m";
-            authentication = {
-              mode = "wpa3-sae"; # may need to enable compatablity mode
-              saePasswordsFile = config.sops.secrets."access_points/metered/psk".path; # Use saePasswordsFile if possible.
-            };
-            # fake bsside to satisfy module assertion
-            # overided by ddynamicConfigScripts
-            bssid = "00:00:00:00:00:00";
-            settings = {
-              bridge = "br-lan-m";
-            };
-            dynamicConfigScripts = {
-              "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
-                HOSTAPD_CONFIG_FILE=$1
-                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/metered/bssid2".path} \
-                  | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
-              '';
-            };
-          };
+         # "wlp1s0u1u1-1" = {
+         #   ssid = "${config.networking.hostName}-m";
+         #   authentication = {
+         #     mode = "wpa3-sae"; # may need to enable compatablity mode
+         #     saePasswordsFile = config.sops.secrets."access_points/metered/psk".path; # Use saePasswordsFile if possible.
+         #   };
+         #   # fake bsside to satisfy module assertion
+         #   # overided by ddynamicConfigScripts
+         #   bssid = "00:00:00:00:00:00";
+         #   settings = {
+         #     bridge = "br-lan-m";
+         #   };
+         #   dynamicConfigScripts = {
+         #     "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
+         #       HOSTAPD_CONFIG_FILE=$1
+         #       grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/metered/bssid2".path} \
+         #         | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
+         #     '';
+         #   };
+         # };
         };
       };
       "wlan0" = {
@@ -75,7 +75,7 @@
         };
         wifi5 = {
           enable = true;
-          operatingChannelWidth = "80"; # or "20or40"
+          operatingChannelWidth = "20or40"; # or "80"
           capabilities = [
             #"MAX-MPDU-11454"
             #"RXLDPC"
