@@ -50,7 +50,7 @@
             #"MAX-MPDU-11454"
             #"RXLDPC"
             "SHORT-GI-80"
-            "TX-STBC-2BY1"
+            #"TX-STBC-2BY1"
             "SU-BEAMFORMEE"
             "MU-BEAMFORMEE"
             "HTC-VHT"
