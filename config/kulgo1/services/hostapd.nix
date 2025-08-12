@@ -57,7 +57,7 @@
           ];
         };
         networks = {
-          "wlp1s0u1u1" = {
+          "wlan0" = {
             ssid = config.networking.hostName;
             authentication = {
               mode = "wpa3-sae"; # may need to enable compatablity mode
@@ -77,26 +77,26 @@
               '';
             };
           };
-#          "wlp1s0u1u1-1" = {
-#            ssid = "${config.networking.hostName}-metered";
-#            authentication = {
-#              mode = "wpa3-sae";
-#              saePasswordsFile = config.sops.secrets."access_points/metered/psk".path;
-#            };
-#            # fake bsside to satisfy module assertion
-#            # overided by ddynamicConfigScripts
-#            bssid = "00:00:00:00:00:00";
-#            settings = {
-#              bridge = "br-lan-m";
-#            };
-#            dynamicConfigScripts = {
-#              "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
-#                HOSTAPD_CONFIG_FILE=$1
-#                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/metered/bssid".path} \
-#                  | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
-#              '';
-#            };
-#          };
+          #          "wlp1s0u1u1-1" = {
+          #            ssid = "${config.networking.hostName}-metered";
+          #            authentication = {
+          #              mode = "wpa3-sae";
+          #              saePasswordsFile = config.sops.secrets."access_points/metered/psk".path;
+          #            };
+          #            # fake bsside to satisfy module assertion
+          #            # overided by ddynamicConfigScripts
+          #            bssid = "00:00:00:00:00:00";
+          #            settings = {
+          #              bridge = "br-lan-m";
+          #            };
+          #            dynamicConfigScripts = {
+          #              "20-bssidFile" = pkgs.writeShellScript "bssid-file" ''
+          #                HOSTAPD_CONFIG_FILE=$1
+          #                grep -v '\s*#' ${lib.escapeShellArg config.sops.secrets."access_points/metered/bssid".path} \
+          #                  | sed 's/^/bssid=/' >> "$HOSTAPD_CONFIG_FILE"
+          #              '';
+          #            };
+          #          };
         };
       };
     };
