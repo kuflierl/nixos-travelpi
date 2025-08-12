@@ -9,13 +9,13 @@
   services.hostapd = {
     enable = true;
     radios = {
-      "wlan0" = {
+      "wlp1s0u1u1" = {
         band = "2g";
         countryCode = "DE";
         channel = 0; # ACS
         networks = {
-          "wlan0" = {
-            ssid = config.networking.hostName;
+          "wlp1s0u1u1" = {
+            ssid = "${config.networking.hostName}-2g";
             authentication = {
               mode = "wpa3-sae"; # may need to enable compatablity mode
               saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
@@ -26,10 +26,10 @@
           };
         };
       };
-      "wlp1s0u1u1" = {
+      "wlan0" = {
         band = "5g";
         countryCode = "DE";
-        channel = 149; # ACS doesn't seem to work for whatever reason
+        channel = 0; # ACS
         # see https://github.com/morrownr/USB-WiFi/discussions/420
         wifi4 = {
           enable = true;
@@ -38,7 +38,9 @@
             "HT40+" # "HT40-"
             "SHORT-GI-20"
             "SHORT-GI-40"
+            "RX-STBC1"
             "MAX-AMSDU-7935"
+            "DSSS_CCK-40"
           ];
         };
         wifi5 = {
