@@ -13,8 +13,8 @@
     initrd.kernelModules = [ ];
     kernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [
-      # enable usb wifi dongle (disabled due to newer kernels including this)
-      # rtl88x2bu
+      # enable usb wifi dongle (disabled due to newer kernels including this, reenabled till next release)
+      rtl88x2bu
     ];
   };
 
