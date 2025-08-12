@@ -18,6 +18,9 @@
     ];
   };
 
+  # enable mode switching for multi certain USB WLAN and WWAN adapters
+  hardware.usb-modeswitch.enable = true;
+
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
