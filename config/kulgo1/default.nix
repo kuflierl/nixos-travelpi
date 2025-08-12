@@ -40,6 +40,7 @@
     speedtest-cli
     btop
     htop
+    dig
   ];
 
   i18n =
