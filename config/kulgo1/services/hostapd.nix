@@ -17,8 +17,9 @@
           "wlp1s0u1u1" = {
             ssid = config.networking.hostName;
             authentication = {
-              mode = "wpa2-sha256"; # may need to enable compatablity mode
-              wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
+              mode = "wpa3-sae-transition"; # may need to enable compatablity mode
+              saePasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
+              wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path;
             };
             # fake bsside to satisfy module assertion
             # overided by ddynamicConfigScripts
@@ -61,36 +62,32 @@
         countryCode = "DE";
         channel = 0; # ACS
         # see https://github.com/morrownr/USB-WiFi/discussions/420
-       # wifi4 = {
-       #   enable = true;
-       #   capabilities = [
-       #     #"LDPC"
-       #     "HT40+" # "HT40-"
-       #     "SHORT-GI-20"
-       #     "SHORT-GI-40"
-       #     #"RX-STBC1"
-       #     #"MAX-AMSDU-7935"
-       #     "DSSS_CCK-40"
-       #   ];
-       # };
-       # wifi5 = {
-       #   enable = true;
-       #   operatingChannelWidth = "20or40"; # or "80"
-       #   capabilities = [
-       #     #"MAX-MPDU-11454"
-       #     #"RXLDPC"
-       #     "SHORT-GI-80"
-       #     #"TX-STBC-2BY1"
-       #     "SU-BEAMFORMEE"
-       #     "MU-BEAMFORMEE"
-       #     #"HTC-VHT"
-       #   ];
-       # };
+        # see https://discourse.nixos.org/t/creating-a-raspberry-pi-5-access-point-with-pi-hole/61331/3
+        wifi4 = {
+          enable = true;
+          capabilities = [
+            "HT40+" # "HT40-"
+            "SHORT-GI-20"
+            "SHORT-GI-40"
+            "MAX-AMSDU-3839"
+            "DSSS_CCK-40"
+          ];
+        };
+        wifi5 = {
+          enable = true;
+          operatingChannelWidth = "80"; # or "20or40"
+          capabilities = [
+            "MAX-MPDU-3895"
+            "SHORT-GI-80"
+            "SU-BEAMFORMEE"
+            #"MU-BEAMFORMEE"
+          ];
+        };
         networks = {
           "wlan0" = {
             ssid = "${config.networking.hostName}-5G";
             authentication = {
-              mode = "wpa2-sha256"; # may need to enable compatablity mode
+              mode = "wpa2-sha1"; # rpi doesn't seem to support anything higher
               wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
             };
             # fake bsside to satisfy module assertion
