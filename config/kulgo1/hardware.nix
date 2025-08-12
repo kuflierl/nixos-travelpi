@@ -18,6 +18,8 @@
     ];
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # enable mode switching for multi certain USB WLAN and WWAN adapters
   hardware.usb-modeswitch.enable = true;
 
