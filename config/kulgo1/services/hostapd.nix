@@ -17,8 +17,8 @@
           "wlp1s0u1u1" = {
             ssid = config.networking.hostName;
             authentication = {
-              mode = "wpa3-sae"; # may need to enable compatablity mode
-              saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
+              mode = "wpa2-sha256"; # may need to enable compatablity mode
+              wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
             };
             # fake bsside to satisfy module assertion
             # overided by ddynamicConfigScripts
@@ -90,8 +90,8 @@
           "wlan0" = {
             ssid = "${config.networking.hostName}-5G";
             authentication = {
-              mode = "wpa3-sae"; # may need to enable compatablity mode
-              saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
+              mode = "wpa2-sha256"; # may need to enable compatablity mode
+              wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
             };
             # fake bsside to satisfy module assertion
             # overided by ddynamicConfigScripts
