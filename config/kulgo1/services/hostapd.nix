@@ -47,7 +47,7 @@
           enable = true;
           operatingChannelWidth = "80"; # or "20or40"
           capabilities = [
-            "MAX-MPDU-11454"
+            #"MAX-MPDU-11454"
             "RXLDPC"
             "SHORT-GI-80"
             "TX-STBC-2BY1"
