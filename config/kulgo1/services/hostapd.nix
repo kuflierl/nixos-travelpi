@@ -39,7 +39,7 @@
             "SHORT-GI-20"
             "SHORT-GI-40"
             #"RX-STBC1"
-            "MAX-AMSDU-7935"
+            #"MAX-AMSDU-7935"
             "DSSS_CCK-40"
           ];
         };
