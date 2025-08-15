@@ -9,7 +9,7 @@
     "/media/General-Media" = {
       device = "/dev/disk/by-label/General-Media";
       fsType = "ext4";
-      options = [ "noatime" ]
+      options = [ "noatime" ];
     };
   };
 
