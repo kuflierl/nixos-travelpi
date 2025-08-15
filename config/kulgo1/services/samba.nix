@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
   jellyfin_cfg = config.services.jellyfin;
-  jellyfin_media_dir = "/media/media/General-Media/jellyfin-media";
+  jellyfin_media_dir = "/media/General-Media/jellyfin-media";
 in
 {
   services.samba = {
