@@ -36,8 +36,8 @@ in
           "kuflierl"
           "mflierl"
         ];
-        "force user" = "jellyfin";
-        "force group" = "jellyfin";
+        "force user" = jellyfin_cfg.user;
+        "force group" = jellyfin_cfg.group;
       };
     };
   };
