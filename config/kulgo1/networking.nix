@@ -56,6 +56,13 @@
     # enable systemd networkd for static interfaces
     enable = true;
 
+    links = {
+      "01-wlp1s0u1u1" = {
+        matchConfig.Driver = "rtw88_8822bu";
+        linkConfig.Name = "wlp1s0u1u1";
+      };
+    };
+
     netdevs =
       let
         bridge_list = [
