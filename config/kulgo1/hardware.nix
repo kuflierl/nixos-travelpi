@@ -6,6 +6,11 @@
       fsType = "ext4";
       options = [ "noatime" ];
     };
+    "/media/General-Media" = {
+      device = "/dev/disk/by-label/General-Media";
+      fsType = "ext4";
+      options = [ "noatime" ]
+    };
   };
 
   boot = {
