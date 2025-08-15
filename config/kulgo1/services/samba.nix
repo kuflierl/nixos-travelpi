@@ -15,7 +15,7 @@ in
         #"use sendfile" = "yes";
         #"max protocol" = "smb2";
         # note: localhost is the ipv6 localhost ::1
-        "hosts allow" = lib.concatStringsSep "/" [
+        "hosts allow" = lib.concatStringsSep " " [
           "192.168.10."
           "192.168.11."
           "127.0.0.1"
