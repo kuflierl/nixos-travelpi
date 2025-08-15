@@ -2,10 +2,10 @@
 let
   jellyfin_cfg = config.services.jellyfin;
   jellyfin_media_dir = "/media/media/General-Media/jellyfin-media";
-in 
+in
 {
   services.samba = {
-  enable = true;
+    enable = true;
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
@@ -15,7 +15,12 @@ in
         #"use sendfile" = "yes";
         #"max protocol" = "smb2";
         # note: localhost is the ipv6 localhost ::1
-        "hosts allow" = lib.concatStringsSep "/" [ "192.168.10." "192.168.11." "127.0.0.1" "localhost" ];
+        "hosts allow" = lib.concatStringsSep "/" [
+          "192.168.10."
+          "192.168.11."
+          "127.0.0.1"
+          "localhost"
+        ];
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
@@ -27,14 +32,17 @@ in
         "guest ok" = "no";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "valid users" = lib.concatStringsSep " " [ "kuflierl" "mflierl" ];
+        "valid users" = lib.concatStringsSep " " [
+          "kuflierl"
+          "mflierl"
+        ];
         "force user" = "jellyfin";
         "force group" = "jellyfin";
       };
     };
   };
 
-  systemd.tmpfiles.rules = [ 
+  systemd.tmpfiles.rules = [
     "d ${jellyfin_media_dir} 755 ${jellyfin_cfg.user} ${jellyfin_cfg.group}"
   ];
 

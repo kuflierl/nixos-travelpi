@@ -18,10 +18,12 @@
         lfc-interval = 1800;
         max-row-errors = 100;
       };
-      loggers = [ {
-        name = "*";
-        severity = "DEBUG";
-      } ];
+      loggers = [
+        {
+          name = "*";
+          severity = "DEBUG";
+        }
+      ];
       rebind-timer = 2000;
       renew-timer = 1000;
       valid-lifetime = 4000;
