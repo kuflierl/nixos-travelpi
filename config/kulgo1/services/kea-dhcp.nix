@@ -8,6 +8,8 @@
           "br-lan-u"
           "br-lan-m"
         ];
+        service-sockets-max-retries = 30;
+        service-sockets-retry-wait-time = 5000;
       };
       lease-database = {
         name = "/var/lib/kea/dhcp4.leases";
@@ -23,8 +25,6 @@
       rebind-timer = 2000;
       renew-timer = 1000;
       valid-lifetime = 4000;
-      service-sockets-max-retries = 30;
-      service-sockets-retry-wait-time = 5000;
       subnet4 = [
         {
           id = 1;
