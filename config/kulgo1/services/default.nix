@@ -4,6 +4,7 @@
     ./kea-dhcp.nix
     ./hostapd.nix
     ./blocky.nix
+    ./jellyfin.nix
   ];
 
   services = {
