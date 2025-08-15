@@ -5,6 +5,7 @@
     ./hostapd.nix
     ./blocky.nix
     ./jellyfin.nix
+    ./samba.nix
   ];
 
   services = {

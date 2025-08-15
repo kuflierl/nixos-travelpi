@@ -41,6 +41,7 @@
     btop
     htop
     dig
+    samba # for smbpasswd
   ];
 
   i18n =
