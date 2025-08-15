@@ -9,12 +9,12 @@
   services.hostapd = {
     enable = true;
     radios = {
-      "wlp1s0u1u1" = {
+      "wlp1s0u1" = {
         band = "2g";
         countryCode = "DE";
         channel = 9; # ACS
         networks = {
-          "wlp1s0u1u1" = {
+          "wlp1s0u1" = {
             ssid = config.networking.hostName;
             authentication = {
               mode = "wpa3-sae-transition"; # may need to enable compatablity mode
