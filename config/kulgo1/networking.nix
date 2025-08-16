@@ -17,7 +17,7 @@
                   chain input {
                     type filter hook input priority 0; policy drop;
 
-                    iifname { "br-lan-u" } accept comment "Allow local network to access everything"
+                    iifname { "br-lan" } accept comment "Allow local network to access everything"
                     iifname { "br-wan-u", "br-wan-m" } tcp dport { ssh } accept comment "Allow ssh access from wan for debuging"
                     iifname { "br-wan-u", "br-wan-m" } ct state { established, related } accept comment "Allow established traffic"
                     iifname { "br-wan-u", "br-wan-m" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow ICMP from WAN"
@@ -27,8 +27,8 @@
                   chain forward {
                     type filter hook forward priority filter; policy drop;
 
-                    iifname { "br-lan-u" } oifname { "br-wan-u", "br-wan-m" } accept comment "Allow trusted LAN to WAN"
-                    iifname { "br-wan-u", "br-wan-m" } oifname { "br-lan-u" } ct state { established, related } accept comment "Allow established back to LANs"
+                    iifname { "br-lan" } oifname { "br-wan-u", "br-wan-m" } accept comment "Allow trusted LAN to WAN"
+                    iifname { "br-wan-u", "br-wan-m" } oifname { "br-lan" } ct state { established, related } accept comment "Allow established back to LANs"
                   }
                 }
                 table ip nat {
@@ -63,7 +63,7 @@
     netdevs =
       let
         bridge_list = [
-          "lan-u"
+          "lan"
           "wan-m"
           "wan-u"
         ];
@@ -96,11 +96,6 @@
       #  networkConfig.Bridge = "br-wan-u";
       #  networkConfig.ConfigureWithoutCarrier = true;
       #};
-      #"22-wlan1" = {
-      #  matchConfig.Name = "wlan1";
-      #  linkConfig.RequiredForOnline = "enslaved";
-      #  networkConfig.Bridge = "br-lan-"
-      #};
       "30-br-wan-u" = {
         matchConfig.Name = "br-wan-u";
         networkConfig.DHCP = true;
@@ -119,8 +114,8 @@
         linkConfig.RequiredForOnline = false;
         dhcpV4Config.RouteMetric = 400;
       };
-      "32-br-lan-u" = {
-        matchConfig.Name = "br-lan-u";
+      "32-br-lan" = {
+        matchConfig.Name = "br-lan";
         networkConfig.DHCP = false;
         networkConfig.IPv4Forwarding = true;
         networkConfig.IPv6Forwarding = false; # for now

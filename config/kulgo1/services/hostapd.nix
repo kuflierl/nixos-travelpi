@@ -22,7 +22,7 @@
               wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path;
             };
             settings = {
-              bridge = "br-lan-u";
+              bridge = "br-lan";
             };
           };
         };
@@ -61,7 +61,7 @@
               wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
             };
             settings = {
-              bridge = "br-lan-u";
+              bridge = "br-lan";
             };
           };
         };

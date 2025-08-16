@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       interfaces-config = {
-        interfaces = [ "br-lan-u" ];
+        interfaces = [ "br-lan" ];
         service-sockets-max-retries = 30;
         service-sockets-retry-wait-time = 5000;
       };
@@ -28,7 +28,7 @@
         {
           id = 1;
           subnet = "192.168.10.0/24";
-          interface = "br-lan-u";
+          interface = "br-lan";
           pools = [ { pool = "192.168.10.128 - 192.168.10.254"; } ];
           option-data = [
             {
