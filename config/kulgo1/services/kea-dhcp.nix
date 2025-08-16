@@ -4,10 +4,7 @@
     enable = true;
     settings = {
       interfaces-config = {
-        interfaces = [
-          "br-lan-u"
-          "br-lan-m"
-        ];
+        interfaces = [ "br-lan-u" ];
         service-sockets-max-retries = 30;
         service-sockets-retry-wait-time = 5000;
       };
@@ -41,22 +38,6 @@
             {
               name = "routers";
               data = "192.168.10.1";
-            }
-          ];
-        }
-        {
-          id = 2;
-          subnet = "192.168.11.0/24";
-          interface = "br-lan-m";
-          pools = [ { pool = "192.168.11.128 - 192.168.11.254"; } ];
-          option-data = [
-            {
-              name = "domain-name-servers";
-              data = "192.168.11.1";
-            }
-            {
-              name = "routers";
-              data = "192.168.11.1";
             }
           ];
         }

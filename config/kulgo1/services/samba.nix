@@ -17,7 +17,6 @@ in
         # note: localhost is the ipv6 localhost ::1
         "hosts allow" = lib.concatStringsSep " " [
           "192.168.10."
-          "192.168.11."
           "127.0.0.1"
           "localhost"
         ];

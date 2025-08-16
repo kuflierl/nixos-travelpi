@@ -17,7 +17,7 @@
                   chain input {
                     type filter hook input priority 0; policy drop;
 
-                    iifname { "br-lan-u", "br-lan-m" } accept comment "Allow local network to access everything"
+                    iifname { "br-lan-u" } accept comment "Allow local network to access everything"
                     iifname { "br-wan-u", "br-wan-m" } tcp dport { ssh } accept comment "Allow ssh access from wan for debuging"
                     iifname { "br-wan-u", "br-wan-m" } ct state { established, related } accept comment "Allow established traffic"
                     iifname { "br-wan-u", "br-wan-m" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow ICMP from WAN"
@@ -27,11 +27,8 @@
                   chain forward {
                     type filter hook forward priority filter; policy drop;
 
-                    iifname { "br-lan-u", "br-lan-m" } oifname { "br-lan-u", "br-lan-m" } accept comment "Allow trusted LAN to LAN"
-                    iifname { "br-lan-u", "br-lan-m" } oifname { "br-wan-u" } accept comment "Allow trusted LAN to WAN (unmetered)"
-                    iifname { "br-lan-u" } oifname { "br-wan-m" } accept comment "Allow trusted LAN to WAN (metered)"
-                    iifname { "br-wan-u" } oifname { "br-lan-u", "br-lan-m" } ct state { established, related } accept comment "Allow established back to LANs (unmetered)"
-                    iifname { "br-wan-m" } oifname { "br-lan-u" } ct state { established, related } accept comment "Allow established back to LANs (metered)"
+                    iifname { "br-lan-u" } oifname { "br-wan-u", "br-wan-m" } accept comment "Allow trusted LAN to WAN"
+                    iifname { "br-wan-u", "br-wan-m" } oifname { "br-lan-u" } ct state { established, related } accept comment "Allow established back to LANs"
                   }
                 }
                 table ip nat {
@@ -66,7 +63,6 @@
     netdevs =
       let
         bridge_list = [
-          "lan-m"
           "lan-u"
           "wan-m"
           "wan-u"
@@ -131,18 +127,6 @@
         bridgeConfig = { };
         address = [
           "192.168.10.1/24"
-        ];
-        linkConfig.RequiredForOnline = true;
-        networkConfig.ConfigureWithoutCarrier = true;
-      };
-      "33-br-lan-m" = {
-        matchConfig.Name = "br-lan-m";
-        networkConfig.DHCP = false;
-        networkConfig.IPv4Forwarding = true;
-        networkConfig.IPv6Forwarding = false; # for now
-        bridgeConfig = { };
-        address = [
-          "192.168.11.1/24"
         ];
         linkConfig.RequiredForOnline = true;
         networkConfig.ConfigureWithoutCarrier = true;
