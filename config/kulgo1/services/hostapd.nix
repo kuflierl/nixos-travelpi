@@ -18,8 +18,8 @@
             ssid = config.networking.hostName;
             authentication = {
               mode = "wpa3-sae-transition"; # may need to enable compatablity mode
-              saePasswordsFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
-              wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path;
+              saePasswordsFile = config.sops.secrets."access_points/psk".path; # Use saePasswordsFile if possible.
+              wpaPasswordFile = config.sops.secrets."access_points/psk".path;
             };
             settings = {
               bridge = "br-lan";
@@ -58,7 +58,7 @@
             ssid = "${config.networking.hostName}-5G";
             authentication = {
               mode = "wpa2-sha1"; # rpi doesn't seem to support anything higher
-              wpaPasswordFile = config.sops.secrets."access_points/unmetered/psk".path; # Use saePasswordsFile if possible.
+              wpaPasswordFile = config.sops.secrets."access_points/psk".path; # Use saePasswordsFile if possible.
             };
             settings = {
               bridge = "br-lan";

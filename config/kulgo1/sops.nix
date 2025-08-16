@@ -5,7 +5,7 @@
     defaultSopsFile = ../../secrets/kulgo1.yaml;
     defaultSopsFormat = "yaml";
     secrets = {
-      "access_points/unmetered/psk" = { };
+      "access_points/psk" = { };
       #  "wifi/home1/ssid" = {};
       #  "wifi/home1/psk" = {};
     };
