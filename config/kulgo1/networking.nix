@@ -1,4 +1,4 @@
-{ ... }:
+{ config, lib, ... }:
 {
   # inspired from the following:
   # https://github.com/ghostbuster91/blogposts/blob/a2374f0039f8cdf4faddeaaa0347661ffc2ec7cf/router2023-part2/main.md
@@ -12,40 +12,48 @@
 
     nftables = {
       enable = true;
-      ruleset = ''
-                table inet filter {
-                  chain input {
-                    type filter hook input priority 0; policy drop;
-
-                    iifname { "br-lan" } accept comment "Allow local network to access everything"
-                    iifname { "br-wan-u", "br-wan-m" } tcp dport { ssh } accept comment "Allow ssh access from wan for debuging"
-                    iifname { "br-wan-u", "br-wan-m" } ct state { established, related } accept comment "Allow established traffic"
-                    iifname { "br-wan-u", "br-wan-m" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow ICMP from WAN"
-                    iifname { "br-wan-u", "br-wan-m" } counter drop comment "Drop all other traffic from WAN"
-                    iifname "lo" accept comment "Accept everything from Loopback"
-                  }
-                  chain forward {
-                    type filter hook forward priority filter; policy drop;
-
-                    iifname { "br-lan" } oifname { "br-wan-u", "br-wan-m" } accept comment "Allow trusted LAN to WAN"
-                    iifname { "br-wan-u", "br-wan-m" } oifname { "br-lan" } ct state { established, related } accept comment "Allow established back to LANs"
-                  }
-                }
-                table ip nat {
-                  chain postrouting {
-                    type nat hook postrouting priority 100; policy accept;
-                    oifname { "br-wan-u", "br-wan-m" } masquerade
-                  }
-                }
-                table ip6 filter {
-        	        chain input {
-                    type filter hook input priority 0; policy drop;
-                  }
-                  chain forward {
-                    type filter hook forward priority 0; policy drop;
-                  }
-                }
-      '';
+      ruleset =
+        let
+          jellyfin_cfg = config.services.jellyfin;
+          jellyfin_uid = config.users.users."${jellyfin_cfg.user}".uid;
+          jellyfin_wan_line = lib.optionalString jellyfin_cfg.enable ''oifname "br-wan-m" meta skuid ${builtins.toString jellyfin_uid} drop comment "Do not allow jellyfin to connect to the internet on metered networks"'';
+        in
+        ''
+          table inet filter {
+            chain input {
+              type filter hook input priority 0; policy drop;
+              iifname { "br-lan" } accept comment "Allow local network to access everything"
+              iifname { "br-wan-u", "br-wan-m" } tcp dport { ssh } accept comment "Allow ssh access from wan for debuging"
+              iifname { "br-wan-u", "br-wan-m" } ct state { established, related } accept comment "Allow established traffic"
+              iifname { "br-wan-u", "br-wan-m" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow ICMP from WAN"
+              iifname { "br-wan-u", "br-wan-m" } counter drop comment "Drop all other traffic from WAN"
+              iifname "lo" accept comment "Accept everything from Loopback"
+            }
+            chain output {
+              type filter hook output priority 0; policy accept;
+              ${jellyfin_wan_line}
+            }
+            chain forward {
+              type filter hook forward priority filter; policy drop;
+              iifname { "br-lan" } oifname { "br-wan-u", "br-wan-m" } accept comment "Allow trusted LAN to WAN"
+              iifname { "br-wan-u", "br-wan-m" } oifname { "br-lan" } ct state { established, related } accept comment "Allow established back to LANs"
+            }
+          }
+          table ip nat {
+            chain postrouting {
+              type nat hook postrouting priority 100; policy accept;
+              oifname { "br-wan-u", "br-wan-m" } masquerade
+            }
+          }
+          table ip6 filter {
+            chain input {
+              type filter hook input priority 0; policy drop;
+            }
+            chain forward {
+              type filter hook forward priority 0; policy drop;
+            }
+          }
+        '';
     };
   };
 
