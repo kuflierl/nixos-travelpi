@@ -63,7 +63,7 @@
 
     links = {
       "01-wlp1s0u1u1" = {
-        matchConfig.Driver = "88x2bu";
+        matchConfig.Driver = "rtl88x2bu";
         linkConfig.Name = "wlp1s0u1u1";
       };
     };
