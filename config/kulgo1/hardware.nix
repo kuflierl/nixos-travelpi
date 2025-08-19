@@ -19,11 +19,11 @@
     kernelModules = [ ];
     extraModulePackages = with config.boot.kernelPackages; [
       # enable usb wifi dongle (disabled due to newer kernels including this)
-      # rtl88x2bu
+      rtl88x2bu
     ];
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # enable mode switching for multi certain USB WLAN and WWAN adapters
   hardware.usb-modeswitch.enable = true;
