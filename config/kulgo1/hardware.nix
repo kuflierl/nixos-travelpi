@@ -16,10 +16,14 @@
   boot = {
     initrd.availableKernelModules = [ ];
     initrd.kernelModules = [ ];
-    kernelModules = [ ];
+    kernelModules = [ "88x2bu" ];
     extraModulePackages = with config.boot.kernelPackages; [
       # enable usb wifi dongle (disabled due to newer kernels including this)
       rtl88x2bu
+    ];
+    blacklistedKernelModules = [
+      "rtw88_8822bu"
+      "rtw88_usb"
     ];
   };
 
