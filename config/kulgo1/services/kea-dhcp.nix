@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   services.kea.dhcp4 = {
     enable = true;
@@ -44,4 +44,6 @@
       ];
     };
   };
+
+  systemd.services.kea-dhcp4-server.serviceConfig.Restart = lib.mkForce "always";
 }
