@@ -110,7 +110,7 @@
         networkConfig.IPv6AcceptRA = true;
         networkConfig.IPv4Forwarding = true;
         networkConfig.IPv6Forwarding = false; # for now
-        linkConfig.RequiredForOnline = true;
+        linkConfig.RequiredForOnline = false;
         dhcpV4Config.RouteMetric = 600;
       };
       "31-br-wan-m" = {
