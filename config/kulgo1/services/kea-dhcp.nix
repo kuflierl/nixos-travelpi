@@ -44,4 +44,6 @@
       ];
     };
   };
+
+  systemd.services.kea-dhcp4-server.serviceConfig.Restart = "always";
 }
