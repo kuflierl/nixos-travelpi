@@ -45,5 +45,5 @@
     };
   };
 
-  systemd.services.kea-dhcp4-server.serviceConfig.Restart = "always";
+  systemd.services.kea-dhcp4-server.serviceConfig.Restart = lib.mkForce "always";
 }
