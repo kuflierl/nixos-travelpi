@@ -12,7 +12,7 @@
       "wlp1s0u1u1" = {
         band = "2g";
         countryCode = "DE";
-        channel = 9; # ACS
+        channel = 1; # ACS
         networks = {
           "wlp1s0u1u1" = {
             ssid = config.networking.hostName;
