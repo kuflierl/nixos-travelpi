@@ -9,24 +9,24 @@
   services.hostapd = {
     enable = true;
     radios = {
-      "wlp1s0u1u1" = {
-        band = "2g";
-        countryCode = "DE";
-        channel = 1; # ACS
-        networks = {
-          "wlp1s0u1u1" = {
-            ssid = config.networking.hostName;
-            authentication = {
-              mode = "wpa3-sae-transition"; # may need to enable compatablity mode
-              saePasswordsFile = config.sops.secrets."access_points/psk".path; # Use saePasswordsFile if possible.
-              wpaPasswordFile = config.sops.secrets."access_points/psk".path;
-            };
-            settings = {
-              bridge = "br-lan";
-            };
-          };
-        };
-      };
+#       "wlp1s0u1u1" = {
+#         band = "2g";
+#         countryCode = "DE";
+#         channel = 1; # ACS
+#         networks = {
+#           "wlp1s0u1u1" = {
+#             ssid = config.networking.hostName;
+#             authentication = {
+#               mode = "wpa3-sae-transition"; # may need to enable compatablity mode
+#               saePasswordsFile = config.sops.secrets."access_points/psk".path; # Use saePasswordsFile if possible.
+#               wpaPasswordFile = config.sops.secrets."access_points/psk".path;
+#             };
+#             settings = {
+#               bridge = "br-lan";
+#             };
+#           };
+#         };
+#       };
       "wlan0" = {
         band = "5g";
         countryCode = "DE";
