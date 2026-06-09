@@ -98,6 +98,12 @@
         networkConfig.Bridge = "br-wan-m";
         networkConfig.ConfigureWithoutCarrier = false;
       };
+      "81-iphone-hotspot" = {
+        matchConfig.Name = "iphone";
+        linkConfig.RequiredForOnline = false;
+        networkConfig.Bridge = "br-wan-m";
+        networkConfig.ConfigureWithoutCarrier = false;
+      };
       #"21-wlan0" = {
       #  matchConfig.Name = "wlan0";
       #  linkConfig.RequiredForOnline = "enslaved";
