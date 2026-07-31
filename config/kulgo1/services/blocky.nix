@@ -1,4 +1,4 @@
-{ variables, ... }: {
+_: {
   networking.firewall = {
     allowedTCPPorts = [ 53 ];
     allowedUDPPorts = [ 53 ];
@@ -26,12 +26,6 @@
 
       customDNS = {
         # customTTL = "1h";
-        zone = ''
-          $ORIGIN ${variables.FQDN}.
-          @ 3600 CNAME kul5.lan.
-          ${variables.otcFQDN}. 3600 CNAME kul5.lan.
-          home 3600 CNAME router.lan.
-        '';
       };
 
       conditional.mapping = {
