@@ -2,7 +2,7 @@
   description = "Nixos-TravelPI";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +15,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
