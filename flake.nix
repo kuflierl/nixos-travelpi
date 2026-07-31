@@ -43,6 +43,7 @@
           modules = [
             sops-nix.nixosModules.sops
             nixos-hardware.nixosModules.raspberry-pi-4
+            ./modules/common
             ./config/kulgo1
           ];
         };
