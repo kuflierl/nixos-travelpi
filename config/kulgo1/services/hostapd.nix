@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-{
+{ config, ... }: {
   # partial inspiration from https://github.com/ghostbuster91/nixos-router/blob/main/modules/nixos/hostapd.nix
   services.hostapd = {
     enable = true;

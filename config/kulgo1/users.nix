@@ -1,5 +1,4 @@
-{ config, lib, ... }:
-{
+{ config, lib, ... }: {
   users =
     let
       jellyfin_cfg = config.services.jellyfin;

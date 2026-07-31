@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   services.jellyfin =
     let
       external-drive = "/media/General-Media";

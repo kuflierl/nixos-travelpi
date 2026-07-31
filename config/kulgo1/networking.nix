@@ -1,5 +1,4 @@
-{ config, lib, ... }:
-{
+{ config, lib, ... }: {
   # inspired from the following:
   # https://github.com/ghostbuster91/blogposts/blob/a2374f0039f8cdf4faddeaaa0347661ffc2ec7cf/router2023-part2/main.md
 
@@ -83,7 +82,7 @@
           };
         };
       in
-      builtins.listToAttrs (builtins.map (bridge_template) bridge_list);
+      builtins.listToAttrs (builtins.map bridge_template bridge_list);
 
     networks = {
       "20-end0" = {
@@ -128,9 +127,7 @@
         networkConfig.IPv4Forwarding = true;
         networkConfig.IPv6Forwarding = false; # for now
         bridgeConfig = { };
-        address = [
-          "192.168.10.1/24"
-        ];
+        address = [ "192.168.10.1/24" ];
         linkConfig.RequiredForOnline = true;
         networkConfig.ConfigureWithoutCarrier = true;
       };
