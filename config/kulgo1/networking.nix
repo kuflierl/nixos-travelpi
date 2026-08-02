@@ -119,7 +119,7 @@
         networkConfig.IPv4Forwarding = true;
         networkConfig.IPv6Forwarding = false; # for now
         linkConfig.RequiredForOnline = false;
-        dhcpV4Config.RouteMetric = 400;
+        dhcpV4Config.RouteMetric = 800;
       };
       "32-br-lan" = {
         matchConfig.Name = "br-lan";
