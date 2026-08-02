@@ -65,6 +65,13 @@
         matchConfig.Driver = "rtw88_8822bu";
         linkConfig.Name = "wlp1s0u1u1";
       };
+      "02-enp1s0u1u1" = {
+        matchConfig.Property = [
+          "ID_VENDOR_ID=12d1"
+          "ID_MODEL_ID=155e"
+        ];
+        linkConfig.Name = "enp1s0u1u1";
+      };
     };
 
     netdevs =
@@ -91,8 +98,8 @@
         networkConfig.Bridge = "br-wan-u";
         networkConfig.ConfigureWithoutCarrier = true;
       };
-      "21-enp1s0u1u4" = {
-        matchConfig.Name = "enp1s0u1u4";
+      "21-enp1s0u1u1" = {
+        matchConfig.Name = "enp1s0u1u1";
         linkConfig.RequiredForOnline = false;
         networkConfig.Bridge = "br-wan-m";
         networkConfig.ConfigureWithoutCarrier = false;
