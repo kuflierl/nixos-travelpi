@@ -13,7 +13,7 @@
         countryCode = "DE";
 
         # Channel 6 selected (Non-overlapping 2437 MHz).
-        channel = 6;
+        channel = 3;
 
         # IEEE 802.11n (Wi-Fi 4) Configuration
         wifi4 = {
