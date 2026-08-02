@@ -112,7 +112,7 @@ _: {
       caching = {
         minTime = "5m";
         # maxTime = "30m";
-        prefetching = true;
+        prefetching = false;
       };
 
       clientLookup = {
