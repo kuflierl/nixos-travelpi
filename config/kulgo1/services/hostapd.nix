@@ -31,7 +31,7 @@
 
             # Security: WPA3-SAE / WPA2-PSK Transition Mode
             authentication = {
-              mode = "wpa3-sae-transition";
+              mode = "wpa2-sha1";
               saePasswordsFile = config.sops.secrets."access_points/psk".path;
               wpaPasswordFile = config.sops.secrets."access_points/psk".path;
             };
@@ -42,8 +42,8 @@
               # Enforce WMM (Wi-Fi Multi-Media) for 802.11n compliance
               wmm_enabled = 1;
 
-              # PMF Optional (Required for WPA3 Transition Mode)
-              ieee80211w = 1;
+              # Explicitly disable PMF on Broadcom wlan0 to prevent firmware rejection
+              ieee80211w = 0;
 
               # Tuning for mobile travel clients
               disassoc_low_ack = 1;

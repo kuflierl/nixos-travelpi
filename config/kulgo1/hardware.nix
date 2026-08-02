@@ -15,7 +15,7 @@ _: {
   boot = {
     # Kernel driver tuning to prevent dynamic bus autosuspend and link drops for WI-FI
     extraModprobeConfig = ''
-      options brcmfmac feature_disable=0x8
+      options brcmfmac feature_disable=0x82000
       options rtw88_core disable_lps_deep=y
       options rtw88_usb disable_autosuspend=y
     '';
