@@ -15,7 +15,7 @@
         let
           jellyfin_cfg = config.services.jellyfin;
           jellyfin_uid = config.users.users."${jellyfin_cfg.user}".uid;
-          jellyfin_wan_line = lib.optionalString jellyfin_cfg.enable ''oifname "br-wan-m" meta skuid ${builtins.toString jellyfin_uid} drop comment "Do not allow jellyfin to connect to the internet on metered networks"'';
+          jellyfin_wan_line = lib.optionalString jellyfin_cfg.enable ''oifname "br-wan-m" meta skuid ${toString jellyfin_uid} drop comment "Do not allow jellyfin to connect to the internet on metered networks"'';
         in
         ''
           table inet filter {
@@ -82,7 +82,7 @@
           };
         };
       in
-      builtins.listToAttrs (builtins.map bridge_template bridge_list);
+      builtins.listToAttrs (map bridge_template bridge_list);
 
     networks = {
       "20-end0" = {
